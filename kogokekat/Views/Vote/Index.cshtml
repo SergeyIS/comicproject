@@ -1,0 +1,41 @@
+﻿@model List<kogokekat.DataAccess.Participant>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Vote</title>
+    <link rel="stylesheet" href="~/CSS/uikit-rtl.min.css" />
+    <link rel="stylesheet" href="~/CSS/uikit.min.css" />
+    <script src="~/JS/uikit-icons.min.js"></script>
+    <script src="~/JS/uikit.min.js"></script>
+</head>
+<body>
+    <form method="post" action="vote">
+        <fieldset class="uk-fieldset">
+
+            <input value="@ViewBag.token" name="Token" style="display:none"/>
+            <legend class="uk-legend">Выбери, кого кекаем</legend>
+            
+            <div class="uk-margin">
+                <select name="VictimId" class="uk-select">
+                    @foreach(var item in Model)
+                    {
+                        <option name="VictimId" value="@item.Id">@item.FirstName  @item.LastName</option>
+                    }
+                </select>
+            </div>
+
+            <div class="uk-margin">
+                <input name="Comment" class="uk-textarea" rows="5" placeholder="Опиши в двух предложениях, почему ты принял(а) такое решение" maxlength="30"/>
+            </div>
+            
+            <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">Отправить</button>
+        </fieldset>
+    </form>
+</body>
+</html>

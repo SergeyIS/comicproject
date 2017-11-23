@@ -1,0 +1,30 @@
+﻿@model List<kogokekat.DataAccess.Participant>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Results</title>
+    <link rel="stylesheet" href="~/CSS/uikit-rtl.min.css" />
+    <link rel="stylesheet" href="~/CSS/uikit.min.css" />
+    <script src="~/JS/uikit-icons.min.js"></script>
+    <script src="~/JS/uikit.min.js"></script>
+</head>
+<body>
+    <div class="uk-text-large">
+        Претенденты на выбывание из комнаты:
+    </div>
+    <ul class="uk-list uk-list-striped">
+        @foreach(var item in Model)
+        {
+            <li>@item.FirstName @item.LastName @item.Rating</li>
+        }
+    </ul>
+    <div class="uk-text-meta">Участники указаны в порядке убывания приоритета на выбывание. Справа от каждого участника указан рейтинг, чем он выше тем больше шансов отчалить</div>
+    <div class="uk-text-meta">В случае, если рейтинг участников совпадает, выбирается случайный</div>
+</body>
+</html>
